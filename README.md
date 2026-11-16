@@ -1,39 +1,41 @@
-# Workspace Icons for Omarchy
+**Русский** · [English](README.en.md)
 
-Workspace indicators for the [Omarchy](https://omarchy.org) bar that show the **logo of the app that opened on each workspace first** instead of a bare number.
+# Workspace Icons для Omarchy
 
-Omarchy's stock workspace widget names a workspace by its number. This plugin keeps the navigation you already know and replaces the number with the app's own icon: Steam on the workspace where Steam lives, the game on the workspace where you started it, and so on. The number does not disappear — it moves to a corner, small enough not to compete with the logo.
+Индикатор рабочих столов для [бара Omarchy](https://omarchy.org), который показывает **логотип приложения, открывшегося на этом рабочем столе первым**, вместо голого номера.
 
-![The bar: menu button, then workspaces 1–5 with Terraria, Foot and Steam logos](preview.png)
+Штатный виджет рабочих столов Omarchy подписывает стол номером. Этот плагин сохраняет привычную навигацию и заменяет номер иконкой самого приложения: Steam — на столе, где живёт Steam, игра — на столе, где вы её запустили, и так далее. Номер не исчезает — он переезжает в угол, достаточно мелкий, чтобы не спорить с логотипом.
 
-*Workspaces 1, 2 and 3 hold Terraria, Foot and Steam — the number sits in the corner; empty workspaces keep the dimmed number.*
+![Бар: кнопка меню, затем рабочие столы 1–5 с логотипами Terraria, Foot и Steam](preview.png)
 
-## Features
+*На столах 1, 2 и 3 — Terraria, Foot и Steam: номер в углу, а пустые столы сохраняют приглушённый номер.*
 
-- The logo of the app that launched there first — the order comes from process start times, so it does not jump around when you switch windows.
-- The workspace number in the bottom-right corner (`Super+1…5` stays readable), and a `+N` badge when a workspace holds more apps than the one whose logo is drawn.
-- Active workspace: an accent dot and a tiny layout glyph (tile / scroll / float). Clicking the active workspace still cycles the layout, exactly as before.
-- Empty workspace: the familiar dimmed number; an empty active workspace shows the layout glyph.
-- Everything else from the built-in widget: click to focus, wheel to scroll, per-monitor workspace blocks, workspaces visiting from an unplugged monitor, hover tooltips.
-- Apps with no desktop entry get an initials badge instead of a blank slot.
-- Minimized windows keep counting on the workspace they were minimized from.
+## Возможности
 
-## Requirements
+- Логотип приложения, которое открылось там первым. Порядок берётся из времени старта процессов, поэтому не прыгает при переключении окон.
+- Номер рабочего стола в правом нижнем углу (`Super+1…5` остаётся читаемым) и бейдж `+N`, когда на столе больше приложений, чем нарисовано.
+- Активный стол: акцентная точка и крошечный значок раскладки (tile / scroll / float). Клик по активному столу по-прежнему переключает раскладку — ровно как раньше.
+- Пустой стол: привычный приглушённый номер; пустой активный стол показывает значок раскладки.
+- Всё остальное из штатного виджета: клик для фокуса, прокрутка колесом, блоки столов для каждого монитора, столы, приехавшие с отключённого монитора, подсказки при наведении.
+- Приложения без desktop-файла получают бейдж с инициалами вместо пустого слота.
+- Свёрнутые окна продолжают считаться на том столе, с которого их свернули.
 
-- Omarchy 4.x (Hyprland + `omarchy-shell`). Tested on Omarchy 4.5.
-- Nothing else — no extra binaries, no Python, no scripts.
+## Требования
 
-## Install
+- Omarchy 4.x (Hyprland + `omarchy-shell`). Проверено на Omarchy 4.5.
+- Больше ничего — никаких дополнительных бинарников, Python и скриптов.
 
-One command:
+## Установка
+
+Одна команда:
 
 ```bash
 omarchy plugin add https://github.com/FostikPts/omarchy-workspace-icons --enable --yes
 ```
 
-This clones the plugin into `~/.config/omarchy/plugins/fostik.workspace-icons`, validates it, enables it, and places it on the bar. The plugin is a clone of the built-in `omarchy.workspaces` widget, so it **replaces that widget in place** — same section, same position, with its settings carried over. If the bar looks unchanged afterwards, run `omarchy restart shell`.
+Она клонирует плагин в `~/.config/omarchy/plugins/fostik.workspace-icons`, проверяет его, включает и ставит на бар. Плагин — клон штатного виджета `omarchy.workspaces`, поэтому он **занимает его место**: та же секция, та же позиция, настройки переносятся. Если бар не изменился, выполните `omarchy restart shell`.
 
-Manual install, if you prefer:
+Вручную, если предпочитаете:
 
 ```bash
 git clone https://github.com/FostikPts/omarchy-workspace-icons \
@@ -41,9 +43,9 @@ git clone https://github.com/FostikPts/omarchy-workspace-icons \
 omarchy plugin enable fostik.workspace-icons --section left
 ```
 
-## Settings
+## Настройки
 
-Settings live in `~/.config/omarchy/shell.json` and apply live.
+Настройки лежат в `~/.config/omarchy/shell.json` и применяются на лету.
 
 ```bash
 omarchy bar set fostik.workspace-icons showNumbers Off
@@ -51,64 +53,42 @@ omarchy bar set fostik.workspace-icons showAppCount Off
 omarchy bar set fostik.workspace-icons firstAppBy "Focused last"
 ```
 
-| Key | Values | Default | Meaning |
+| Ключ | Значения | По умолчанию | Смысл |
 | --- | --- | --- | --- |
-| `showNumbers` | `On`, `Off` | `On` | Show the workspace number in the corner of an occupied workspace. |
-| `showAppCount` | `On`, `Off` | `On` | Show `+N` when the workspace holds more apps than the one drawn. |
-| `firstAppBy` | `Launched first`, `Focused last` | `Launched first` | Pick the app that opened first there, or the one focused there most recently. |
+| `showNumbers` | `On`, `Off` | `On` | Показывать номер рабочего стола в углу занятого стола. |
+| `showAppCount` | `On`, `Off` | `On` | Показывать `+N`, когда на столе больше приложений, чем нарисовано. |
+| `firstAppBy` | `Launched first`, `Focused last` | `Launched first` | Выбрать приложение, открывшееся там первым, или то, что фокусировали последним. |
 
-## How it works
+## Как это работает
 
-- **Which app is first.** For windows already on screen when the shell started, the order is the start time of their process, read once from `/proc/<pid>/stat` (field 22, clock ticks since boot). Windows that appear later rank after all of those and are ordered by when they were first seen. That keeps "first launched" honest: a fresh browser window on an old workspace does not inherit its process' age, and switching focus never changes the answer.
-- **Minimized windows.** Omarchy moves a minimized window to the hidden `special:minimized` workspace and tags it `omarchy-minimized-from-N`. The tag wins over the hidden workspace, so the logo stays put. (Omarchy itself only minimizes on floating workspaces.)
-- **Dialogs.** Transient and child windows are not counted as separate apps; they belong to the window they hang off.
-- **Icons.** The app id is looked up with `DesktopEntries.heuristicLookup`, then the entry icon is resolved through the shell's app-library icon index and `Quickshell.iconPath`. Windows whose class names no desktop entry (a Steam game reports `Terraria.bin.x86_64`, for example) are matched loosely against desktop-entry names, and anything still unresolved gets a round initials badge.
-- **Layout refresh.** The widget keeps the built-in `moduleName: "omarchy.workspaces"` on purpose: Omarchy's layout commands broadcast their refresh to that IPC target. Because the plugin replaces the built-in widget during install, only one of them is on the bar at a time — don't add the built-in Workspaces widget next to this one.
+- **Какое приложение первое.** Для окон, уже бывших на экране к моменту старта шелла, порядок определяется временем старта их процесса, прочитанным один раз из `/proc/<pid>/stat` (поле 22, тики с момента загрузки). Окна, появившиеся позже, идут после них и упорядочиваются по моменту первого появления. Так «первым запущенным» остаётся честным: новое окно браузера на старом столе не наследует возраст своего процесса, а смена фокуса никогда не меняет ответ.
+- **Свёрнутые окна.** Omarchy переносит свёрнутое окно на скрытый стол `special:minimized` и помечает его тегом `omarchy-minimized-from-N`. Тег важнее скрытого стола, поэтому логотип остаётся на месте. (Сам Omarchy сворачивает окна только на плавающих раскладках.)
+- **Диалоги.** Транзиентные и дочерние окна не считаются отдельными приложениями; они принадлежат окну, от которого висят.
+- **Иконки.** id приложения ищется через `DesktopEntries.heuristicLookup`, затем иконка записи разрешается через индекс иконок app-library шелла и `Quickshell.iconPath`. Окна, чьи имена классов не находят desktop-запись (например, игра в Steam сообщает `Terraria.bin.x86_64`), сопоставляются с названиями desktop-записей нестрого, а всё, что осталось неразрешённым, получает круглый бейдж с инициалами.
+- **Обновление раскладки.** Виджет намеренно сохраняет штатный `moduleName: "omarchy.workspaces"`: команды раскладки Omarchy рассылают обновление на этот IPC-адрес. Поскольку при установке плагин заменяет штатный виджет, на баре в каждый момент находится только один из них — не добавляйте штатный Workspaces рядом с этим.
 
-## Uninstall
+## Удаление
 
 ```bash
 omarchy plugin disable fostik.workspace-icons
 omarchy plugin remove fostik.workspace-icons --yes
 ```
 
-Disabling a clone puts the built-in `omarchy.workspaces` widget back where the clone was, so the bar returns to its stock look.
+Отключение клона возвращает штатный виджет `omarchy.workspaces` на место клона, и бар снова выглядит как обычно.
 
-## Development
+## Разработка
 
-The plugin is three files plus tests:
+Плагин — три файла плюс тесты:
 
-- `manifest.json` — plugin metadata, settings schema, default bar section.
-- `Workspaces.qml` — the widget: slots, clicks, scrolling, layout glyph, IPC.
-- `WorkspaceIcons.js` — pure helpers: `/proc` parsing, minimized-origin tags, window grouping and ordering, desktop-entry matching, text escaping.
-
-```bash
-node tests/helpers.test.js          # 17 checks, no dependencies
-omarchy plugin validate .           # manifest and entry points
-```
-
-## Русский
-
-Индикатор рабочих столов для бара Omarchy: вместо номера — логотип приложения, которое запустилось на этом столе первым. Номер остаётся мелкой цифрой в углу, а `+N` показывает, сколько ещё приложений живёт на столе.
-
-Установка одной командой:
+- `manifest.json` — метаданные плагина, схема настроек, секция бара по умолчанию.
+- `Workspaces.qml` — сам виджет: слоты, клики, прокрутка, значок раскладки, IPC.
+- `WorkspaceIcons.js` — чистые хелперы: разбор `/proc`, теги origin свёрнутых окон, группировка и упорядочивание окон, сопоставление desktop-записей, экранирование текста.
 
 ```bash
-omarchy plugin add https://github.com/FostikPts/omarchy-workspace-icons --enable --yes
+node tests/helpers.test.js          # 17 проверок, без зависимостей
+omarchy plugin validate .           # манифест и точки входа
 ```
 
-Плагин — клон штатного виджета `omarchy.workspaces`, поэтому при включении он занимает его место в баре (та же секция и позиция). Если бар не изменился — `omarchy restart shell`.
+## Лицензия
 
-Настройки применяются на лету:
-
-```bash
-omarchy bar set fostik.workspace-icons showNumbers Off      # убрать цифры в углу
-omarchy bar set fostik.workspace-icons showAppCount Off     # убрать +N
-omarchy bar set fostik.workspace-icons firstAppBy "Focused last"  # последнее активное вместо первого
-```
-
-Удаление: `omarchy plugin disable fostik.workspace-icons`, затем `omarchy plugin remove fostik.workspace-icons --yes`. Штатный виджет вернётся на место автоматически.
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+MIT — см. [LICENSE](LICENSE).
