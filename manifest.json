@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "fostik.workspace-icons",
+  "name": "Workspace Icons",
+  "version": "1.0.0",
+  "author": "Fostik",
+  "license": "MIT",
+  "description": "Workspace indicators that show the logo of the app that opened on each workspace first",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Workspaces.qml"
+  },
+  "barWidget": {
+    "displayName": "Workspace Icons",
+    "description": "Each workspace shows the logo of the app that opened there first, the workspace number, and how many other apps share it.",
+    "category": "Compositor",
+    "allowMultiple": false,
+    "defaultSection": "left",
+    "defaults": {
+      "showNumbers": "On",
+      "showAppCount": "On",
+      "firstAppBy": "Launched first"
+    },
+    "schema": [
+      {
+        "key": "showNumbers",
+        "type": "enum",
+        "label": "Workspace numbers",
+        "options": [
+          "On",
+          "Off"
+        ],
+        "defaultValue": "On",
+        "description": "Show the workspace number in the corner of an occupied workspace."
+      },
+      {
+        "key": "showAppCount",
+        "type": "enum",
+        "label": "Extra app count",
+        "options": [
+          "On",
+          "Off"
+        ],
+        "defaultValue": "On",
+        "description": "Show +N when a workspace holds more apps than the one whose logo is drawn."
+      },
+      {
+        "key": "firstAppBy",
+        "type": "enum",
+        "label": "Which app to show",
+        "options": [
+          "Launched first",
+          "Focused last"
+        ],
+        "defaultValue": "Launched first",
+        "description": "Pick the app that opened first on the workspace, or the one focused there most recently."
+      }
+    ]
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.workspaces"
+  }
+}
